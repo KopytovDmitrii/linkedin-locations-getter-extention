@@ -6,8 +6,8 @@ import ResetButton from './components/ResetButton';
 import Counter from './components/Counter';
 import StatusMessage from './components/StatusMessage';
 import './App.css';
-import { STORAGE_KEYS, MSG as MESSAGES } from '../../modules/constants';
-import { makeCSV } from '../../modules/utils';
+import { STORAGE_KEYS, MSG as MESSAGES } from '../../shared/constants';
+import { makeCSV } from '../../shared/utils';
 
 function App() {
   const [count, setCount] = useState(0);

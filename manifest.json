@@ -1,25 +1,37 @@
 {
   "manifest_version": 3,
-  "name": "LinkedIn location Collector",
-  "version": "1.0",
-  "description": "Сохраняет имя и местоположение пользователей LinkedIn в CSV.",
-  "permissions": ["storage", "scripting", "activeTab", "downloads"],
-  "host_permissions": ["https://www.linkedin.com/search/*"],
+  "name": "LinkedIn Locations Collector",
+  "version": "1.0.0",
+  "description": "Automatically collects and exports LinkedIn user locations to CSV",
+  "icons": {
+    "16": "assets/icon16.png",
+    "48": "assets/icon48.png",
+    "128": "assets/icon128.png"
+  },
+  "permissions": [
+    "storage",
+    "scripting",
+    "activeTab",
+    "downloads"
+  ],
+  "host_permissions": [
+    "https://www.linkedin.com/search/results/people/*"
+  ],
   "background": {
-    "service_worker": "background.js"
+    "service_worker": "src/background/background.js"
   },
   "action": {
     "default_popup": "src/popup/index.html",
     "default_icon": {
-      "16": "icon16.png",
-      "48": "icon48.png",
-      "128": "icon128.png"
+      "16": "assets/icon16.png",
+      "48": "assets/icon48.png",
+      "128": "assets/icon128.png"
     }
   },
   "content_scripts": [
     {
-      "matches": ["https://www.linkedin.com/search/*"],
-      "js": ["content.js"]
+      "matches": ["https://www.linkedin.com/search/results/people/*"],
+      "js": ["src/content/content.js"]
     }
   ]
-} 
+}

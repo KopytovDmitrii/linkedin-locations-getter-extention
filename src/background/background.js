@@ -1,4 +1,4 @@
-importScripts('modules/logger.js', 'modules/utils.js', 'modules/constants.js');
+importScripts('../shared/logger.js', '../shared/utils.js', '../shared/constants.js');
 
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.action === 'download_csv') {
