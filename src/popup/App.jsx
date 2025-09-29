@@ -7,25 +7,14 @@ import Counter from './components/Counter';
 import StatusMessage from './components/StatusMessage';
 import './App.css';
 
-const STORAGE_KEYS = {
-  linkedinStats: 'linkedinStats',
-  autoCollectEnabled: 'autoCollectEnabled',
-};
-
-const MESSAGES = {
-  exported: 'Экспортировано!',
-  reset: 'Данные сброшены',
-};
+// Import shared constants and utilities
+import { makeCSV } from '../../modules/utils.js';
+import { STORAGE_KEYS, MSG } from '../../modules/constants.js';
 
 function App() {
   const [count, setCount] = useState(0);
   const [isAutoCollectEnabled, setIsAutoCollectEnabled] = useState(false);
   const [status, setStatus] = useState('');
-
-  // Функция для создания CSV
-  const makeCSV = (data) => {
-    return 'Имя,Местоположение\n' + data.map(d => `"${d.name}","${d.location}"`).join('\n');
-  };
 
   // Обновление счетчика
   const updateCount = () => {
@@ -63,7 +52,7 @@ function App() {
         const allData = result[STORAGE_KEYS.linkedinStats] || [];
         const csv = makeCSV(allData);
         chrome.runtime.sendMessage({ action: 'download_csv', data: csv }, (res) => {
-          setStatus(MESSAGES.exported);
+          setStatus(MSG.exported);
           setTimeout(() => setStatus(''), 2000);
         });
       });
@@ -74,7 +63,7 @@ function App() {
   const resetData = () => {
     if (typeof chrome !== 'undefined' && chrome.storage) {
       chrome.storage.local.set({ [STORAGE_KEYS.linkedinStats]: [] }, () => {
-        setStatus(MESSAGES.reset);
+        setStatus(MSG.reset);
         setTimeout(() => setStatus(''), 2000);
         chrome.storage.local.set({ [STORAGE_KEYS.autoCollectEnabled]: false }, () => {
           setIsAutoCollectEnabled(false);
