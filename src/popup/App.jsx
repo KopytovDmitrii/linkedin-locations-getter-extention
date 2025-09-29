@@ -6,26 +6,13 @@ import ResetButton from './components/ResetButton';
 import Counter from './components/Counter';
 import StatusMessage from './components/StatusMessage';
 import './App.css';
-
-const STORAGE_KEYS = {
-  linkedinStats: 'linkedinStats',
-  autoCollectEnabled: 'autoCollectEnabled',
-};
-
-const MESSAGES = {
-  exported: 'Экспортировано!',
-  reset: 'Данные сброшены',
-};
+import { STORAGE_KEYS, MSG as MESSAGES } from '../../modules/constants';
+import { makeCSV } from '../../modules/utils';
 
 function App() {
   const [count, setCount] = useState(0);
   const [isAutoCollectEnabled, setIsAutoCollectEnabled] = useState(false);
   const [status, setStatus] = useState('');
-
-  // Функция для создания CSV
-  const makeCSV = (data) => {
-    return 'Имя,Местоположение\n' + data.map(d => `"${d.name}","${d.location}"`).join('\n');
-  };
 
   // Обновление счетчика
   const updateCount = () => {
