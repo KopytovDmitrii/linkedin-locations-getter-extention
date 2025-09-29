@@ -1,0 +1,26 @@
+.toggle-button {
+  width: 100%;
+  padding: 10px 0;
+  margin-top: 10px;
+  border: none;
+  border-radius: 7px;
+  font-size: 15px;
+  font-weight: 600;
+  background: linear-gradient(90deg, #4e73df 0%, #224abe 100%);
+  color: #fff;
+  box-shadow: 0 2px 8px #4e73df22;
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s, opacity 0.2s;
+  outline: none;
+}
+
+.toggle-button:hover {
+  background: linear-gradient(90deg, #224abe 0%, #4e73df 100%);
+  box-shadow: 0 4px 16px #4e73df33;
+  opacity: 0.95;
+}
+
+.toggle-button.active {
+  background: linear-gradient(90deg, #2ecc40 0%, #27ae60 100%);
+  color: #fff;
+}

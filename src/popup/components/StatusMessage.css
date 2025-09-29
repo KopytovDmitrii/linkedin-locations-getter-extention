@@ -1,0 +1,8 @@
+.status-message {
+  margin-top: 10px;
+  min-height: 18px;
+  text-align: center;
+  font-size: 14px;
+  color: #27ae60;
+  transition: color 0.2s;
+}

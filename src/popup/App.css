@@ -1,0 +1,10 @@
+.app {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  min-width: 260px;
+  max-width: 340px;
+  background: #f7f9fb;
+  margin: 0;
+  padding: 18px 16px 14px 16px;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px #0001;
+}
