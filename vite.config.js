@@ -8,9 +8,18 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     rollupOptions: {
-      input: 'src/popup/main.jsx',
+      input: {
+        popup: 'src/popup/index.html',
+        background: 'background.js',
+        content: 'content.js'
+      },
       output: {
-        entryFileNames: 'popup.js',
+        entryFileNames: (chunkInfo) => {
+          if (chunkInfo.name === 'background' || chunkInfo.name === 'content') {
+            return '[name].js';
+          }
+          return 'assets/[name]-[hash].js';
+        },
         chunkFileNames: 'assets/[name]-[hash].js',
         assetFileNames: 'assets/[name]-[hash].[ext]'
       }
